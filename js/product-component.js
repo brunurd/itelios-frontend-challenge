@@ -9,7 +9,7 @@ ProductInfo.prototype = {
     paymentConditions: "",
     paymentConditionsValueElement : { },
 
-    init(paymentConditions) {
+    init : function (paymentConditions) {
         this.productInfoElement = document.createElement("DIV");
         this.productInfoElement.setAttribute("class","product__info");
 
@@ -38,7 +38,7 @@ ProductInfo.prototype = {
         this.productInfoElement.appendChild(this.paymentConditionsElement);
     },
 
-    setParent(parent, before) {
+    setParent : function (parent, before) {
         this.parent = parent;
 
         if (before === undefined) {
@@ -134,7 +134,7 @@ Product.prototype = {
         this.parent.appendChild(this.element);
     },
 
-    setOldPrice(oldPrice) {
+    setOldPrice : function (oldPrice) {
         this.oldPrice = oldPrice;
 
         this.priceOldElement = document.createElement("P");
@@ -149,13 +149,13 @@ Product.prototype = {
         this.element.insertBefore(this.priceOldElement, this.priceElement);
     },
 
-    setProductInfo(paymentConditions) {
+    setProductInfo : function (paymentConditions) {
         this.productInfo = new ProductInfo();
         this.productInfo.init(paymentConditions);
         this.productInfo.setParent(this.element, this.buttonElement);
     },
 
-    removeButton() {
+    removeButton : function () {
         this.element.removeChild(this.buttonElement);
     }
 }
