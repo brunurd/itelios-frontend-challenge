@@ -7,17 +7,41 @@
         font-family: "Roboto Condensed", sans-serif;
         font-size: 1.7em;
         color: $softGrey;
+
+        @media screen and (max-width: $phone) {
+            height: 66px;
+        }
     }
 
     &__visited {
+        $total: 100%;
+
         float: left;
-        width: 25%;
+        width: $total / 4;
+
+        @media screen and (max-width: $tablet) {
+            width: $total / 3;
+        }
+
+        @media screen and (max-width: $phone) {
+            width: $total / 2;
+        }
     }
 
     &__recommendation {
+        $total: 100%;
+
         float: left;
-        width: 75%;
+        width: ($total / 4) * 3;
         overflow: hidden;
+
+        @media screen and (max-width: $tablet) {
+            width: ($total / 3) * 2;
+        }
+
+        @media screen and (max-width: $phone) {
+            width: $total / 2;
+        }
 
         &__products {
             @include fade(margin-left);

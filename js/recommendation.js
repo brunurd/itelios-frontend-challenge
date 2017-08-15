@@ -34,8 +34,22 @@ function populateRecommendation(element) {
     });
 }
 
+function getDisplayedQuantity() {
+    var quantity = 3;
+
+    if (window.innerWidth < 912) {
+        quantity = 2;
+    }
+
+    if (window.innerWidth < 700) {
+        quantity = 1;
+    }
+
+    return quantity;
+}
+
 function resize(productContainer, products) {
-    var displayedQuantity = 3,
+    var displayedQuantity = getDisplayedQuantity(),
         containerWidth = (100 * products.length) / displayedQuantity,
         productWidth = 100 / products.length;
 
@@ -74,10 +88,11 @@ function carrouselDots(dots, elements, dotSize) {
 }
 
 function spinCarrousel(index) {
-    var displayedQuantity = 3,
+    var displayedQuantity = getDisplayedQuantity(),
         carrousel = document.querySelector(".cross-sell__recommendation__products"),
-        value = index * -(100 / 3);
+        value = index * -(100 / displayedQuantity);
 
+        currentDot = index;
         setActiveDot(index);
         carrousel.style.marginLeft = value + "%";
 }
@@ -91,6 +106,7 @@ function loop(fps, callback) {
 }
 
 var dotsElement = [];
+var currentDot = 0;
 
 populateVisited(document.querySelector(".cross-sell__visited"));
 populateRecommendation(document.querySelector(".cross-sell__recommendation__products"));
@@ -98,4 +114,8 @@ populateRecommendation(document.querySelector(".cross-sell__recommendation__prod
 loop(12, function() {
     resize(document.querySelector(".cross-sell__recommendation__products"), document.querySelectorAll(".product--recommendation"));
     carrouselDots(document.querySelector(".dots__container"), document.querySelectorAll(".product--recommendation"), 22);
+});
+
+window.addEventListener("resize", function() {
+    spinCarrousel(currentDot);
 });

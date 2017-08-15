@@ -96,7 +96,7 @@ Product.prototype = {
 
         this.nameElement = document.createElement("P");
         this.nameElement.setAttribute("class","product__name");
-        var clippedText = this.name.substring(0,70);
+        var clippedText = this.name.substring(0,60);
         if (clippedText != this.name) {
             clippedText += "...";
         }

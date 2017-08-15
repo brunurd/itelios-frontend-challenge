@@ -22,6 +22,9 @@ a:hover {
 .container {
   width: 1230px;
   margin: 0 auto; }
+  @media screen and (max-width: 1231px) {
+    .container {
+      width: 100%; } }
 
 .cross-sell {
   width: 100%;
@@ -31,13 +34,28 @@ a:hover {
     font-family: "Roboto Condensed", sans-serif;
     font-size: 1.7em;
     color: #5e6774; }
+    @media screen and (max-width: 700px) {
+      .cross-sell__title {
+        height: 66px; } }
   .cross-sell__visited {
     float: left;
     width: 25%; }
+    @media screen and (max-width: 912px) {
+      .cross-sell__visited {
+        width: 33.33333%; } }
+    @media screen and (max-width: 700px) {
+      .cross-sell__visited {
+        width: 50%; } }
   .cross-sell__recommendation {
     float: left;
     width: 75%;
     overflow: hidden; }
+    @media screen and (max-width: 912px) {
+      .cross-sell__recommendation {
+        width: 66.66667%; } }
+    @media screen and (max-width: 700px) {
+      .cross-sell__recommendation {
+        width: 50%; } }
     .cross-sell__recommendation__products {
       -webkit-transition: margin-left 0.25s ease-in-out;
       transition: margin-left 0.25s ease-in-out;
@@ -103,6 +121,9 @@ a:hover {
       text-align: left;
       padding: 0;
       margin: 0; }
+      @media screen and (max-width: 912px) {
+        .product__button__text {
+          font-size: 0.8em; } }
     .product__button i {
       margin-left: 5px;
       float: left;
@@ -114,7 +135,8 @@ a:hover {
   width: 100%;
   text-align: center;
   clear: both;
-  float: left; }
+  float: left;
+  margin-top: 10px; }
   .dots__container {
     margin: 0 auto;
     list-style: none;
