@@ -17,7 +17,7 @@ ProductInfo.prototype = {
         this.paymentConditionsElement.setAttribute("class","product__info__payment-conditions");
 
         this.paymentConditionsValueElement = document.createElement("SPAN");
-        this.paymentConditionsValueElement.setAttribute("class","product__info__payment-conditions--value");
+        this.paymentConditionsValueElement.setAttribute("class","product__info__payment-conditions product__info__payment-conditions--value");
 
         var paymentConditionsSplit = paymentConditions.split("ou até ");
 
@@ -55,6 +55,7 @@ Product.prototype = {
     parent : { },
     element : { },
 
+    imageContainerElement : { },
     imageElement : { },
     imageName : "",
 
@@ -64,6 +65,9 @@ Product.prototype = {
     priceElement : { },
     priceValueElement : { },
     price : "",
+
+
+    priceOldElement : { },
     priceOldValueElement : { },
     oldPrice : "",
 
@@ -77,23 +81,26 @@ Product.prototype = {
         this.name = name;
         this.price = price;
 
-        this.element = document.createElement("DIV");
+        this.element = document.createElement("A");
         this.element.setAttribute("class","product");
 
         this.imageElement = document.createElement("IMG");
         this.imageElement.setAttribute("class","product__img");
         this.imageElement.setAttribute("src", this.imageName);
         this.imageElement.setAttribute("alt", "Imagem do produto " + this.name);
-        this.element.appendChild(this.imageElement);
+
+        this.imageContainerElement = document.createElement("DIV");
+        this.imageContainerElement.setAttribute("class","product__img-container");
+        this.imageContainerElement.appendChild(this.imageElement);
+        this.element.appendChild(this.imageContainerElement);
 
         this.nameElement = document.createElement("P");
         this.nameElement.setAttribute("class","product__name");
-        this.nameElement.appendChild(document.createTextNode(this.name));
-        this.element.appendChild(this.nameElement);
-
-        this.nameElement = document.createElement("P");
-        this.nameElement.setAttribute("class","product__name");
-        this.nameElement.appendChild(document.createTextNode(this.name));
+        var clippedText = this.name.substring(0,70);
+        if (clippedText != this.name) {
+            clippedText += "...";
+        }
+        this.nameElement.appendChild(document.createTextNode(clippedText));
         this.element.appendChild(this.nameElement);
 
         this.priceElement = document.createElement("P");
@@ -112,7 +119,11 @@ Product.prototype = {
         this.buttonElement.setAttribute("class","product__button");
         this.buttonElement.setAttribute("name","addToCart");
         this.buttonElement.setAttribute("type","button");
-        this.buttonElement.appendChild(document.createTextNode("adicionar ao carrinho"));
+
+        var buttonText = document.createElement("P");
+        buttonText.setAttribute("class","product__button__text");
+        buttonText.appendChild(document.createTextNode("adicionar ao carrinho"));
+        this.buttonElement.appendChild(buttonText);
 
         var buttonIcon = document.createElement("I");
         buttonIcon.setAttribute("class","material-icons");
@@ -126,11 +137,16 @@ Product.prototype = {
     setOldPrice(oldPrice) {
         this.oldPrice = oldPrice;
 
-        this.priceOldValueElement = document.createElement("SPAN");
-        this.priceOldValueElement.appendChild(document.createTextNode(this.oldPrice));
+        this.priceOldElement = document.createElement("P");
+        this.priceOldElement.setAttribute("class","product__old-price");
+        this.priceOldElement.appendChild(document.createTextNode("De: "));
 
-        this.priceElement.appendChild(document.createTextNode(" "));
-        this.priceElement.appendChild(this.priceOldValueElement);
+        this.priceOldValueElement = document.createElement("SPAN");
+        this.priceOldValueElement.setAttribute("class","product__old-price product__old-price--value");
+        this.priceOldValueElement.appendChild(document.createTextNode(this.oldPrice));
+        this.priceOldElement.appendChild(this.priceOldValueElement);
+
+        this.element.insertBefore(this.priceOldElement, this.priceElement);
     },
 
     setProductInfo(paymentConditions) {
