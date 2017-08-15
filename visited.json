@@ -1,0 +1,21 @@
+[
+    {
+        "data": {
+            "widget": {
+                "size": 1
+            },
+            "visited": [
+                {
+                    "businessId": "6823995",
+                    "name": "iMac Apple MK142BZ/A com Intel® Core™ i5 Dual Core, 8GB, 1TB, Leitor de Cartões, Wireless, Bluetooth, Webcam, LED",
+                    "imageName": "//www.itelios.com.br/arquivos/imagens/iMac-Apple-MK142BZ-A-com-Intel-Core-i5-Dual-Core-8GB-1TB-Leitor-de-Cartoes-Wireless-Bluetooth-Webcam-LED-21-5-e-OS-X-El-Capitan-6823995.jpg",
+                    "price": "R$ 5.999,00",
+                    "oldPrice": null,
+                    "productInfo": {
+                        "paymentConditions": "ou até 9x de R$ 666,56 sem juros"
+                    }
+                }
+            ]
+        }
+    }
+]
