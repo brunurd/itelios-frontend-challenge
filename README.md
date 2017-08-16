@@ -1,6 +1,6 @@
 # Itelios frontend Challenge (Bruno Araujo)
 
-Visualizar: [https://brunurd.github.io/itelios-frontend-challenge/](https://brunurd.github.io/itelios-frontend-challenge/)
+[Visualizar online](http://teletilica.com.br/itelios-frontend-challenge/)
 
 ---
 
